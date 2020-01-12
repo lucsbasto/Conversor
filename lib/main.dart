@@ -22,6 +22,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   double dolar;
   double euro;
+
+  final realController = TextEditingController();
+  final dolarController = TextEditingController();
+  final euroController = TextEditingController();
+
+  void _realChanged(String text) {}
+  void _dolarChanged(String text) {}
+  void _euroChanged(String text) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,11 +71,14 @@ class _HomeState extends State<Home> {
                       Icon(Icons.monetization_on,
                           size: 150, color: Color(0XFFF76E1E)),
                       Divider(),
-                      buildTextField("Real (BRL)", "R\$  "),
+                      buildTextField(
+                          "Real (BRL)", "R\$  ", realController, _realChanged),
                       Divider(),
-                      buildTextField("Dolar (USD)", "\$   "),
+                      buildTextField("Dolar (USD)", "\$   ", dolarController,
+                          _dolarChanged),
                       Divider(),
-                      buildTextField("Euro (EUR)", "€  ")
+                      buildTextField(
+                          "Euro (EUR)", "€  ", euroController, _euroChanged)
                     ],
                   ),
                 );
@@ -78,7 +90,8 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget buildTextField(String label, String prefix) {
+Widget buildTextField(
+    String label, String prefix, TextEditingController controller, Function f) {
   return TextField(
     decoration: InputDecoration(
         labelText: label,
@@ -86,6 +99,8 @@ Widget buildTextField(String label, String prefix) {
         border: OutlineInputBorder(),
         prefixText: prefix),
     style: TextStyle(color: Colors.amber, fontSize: 25),
+    onChanged: f,
+    keyboardType: TextInputType.number,
   );
 }
 
