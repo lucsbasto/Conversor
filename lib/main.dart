@@ -6,7 +6,6 @@ import 'dart:convert';
 const api = "https://api.hgbrasil.com/finance?format=json&key=8d11d540";
 
 void main() async {
-  print(await getData());
   runApp(
     MaterialApp(
       home: Home(),
@@ -30,10 +29,8 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Color(0xFF303030),
         title: Text(
-          "Conversor",
-          style: TextStyle(
-            color: Color(0XFFF76E1E),
-          ),
+          "Conversor Top",
+          style: TextStyle(color: Color(0XFFF76E1E)),
         ),
         centerTitle: true,
       ),
@@ -65,33 +62,11 @@ class _HomeState extends State<Home> {
                       Icon(Icons.monetization_on,
                           size: 150, color: Color(0XFFF76E1E)),
                       Divider(),
-                      TextField(
-                        decoration: InputDecoration(
-                            labelText: "Real (BRL)",
-                            labelStyle: TextStyle(color: Color(0XFFF76E1E)),
-                            border: OutlineInputBorder(),
-                            prefixText: "R\$  "),
-                        style: TextStyle(color: Colors.amber, fontSize: 25.0),
-                      ),
+                      buildTextField("Real (BRL)", "R\$  "),
                       Divider(),
-                      TextField(
-                        decoration: InputDecoration(
-                          labelText: "Dolar (USD)",
-                          labelStyle: TextStyle(color: Color(0XFFF76E1E)),
-                          border: OutlineInputBorder(),
-                          prefixText: "\$   ",
-                        ),
-                        style: TextStyle(color: Colors.amber, fontSize: 25),
-                      ),
+                      buildTextField("Dolar (USD)", "\$   "),
                       Divider(),
-                      TextField(
-                        decoration: InputDecoration(
-                            labelText: "Euro (EUR)",
-                            labelStyle: TextStyle(color: Color(0XFFF76E1E)),
-                            border: OutlineInputBorder(),
-                            prefixText: "€  "),
-                        style: TextStyle(color: Colors.amber, fontSize: 25),
-                      ),
+                      buildTextField("Euro (EUR)", "€  ")
                     ],
                   ),
                 );
@@ -101,6 +76,17 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+}
+
+Widget buildTextField(String label, String prefix) {
+  return TextField(
+    decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Color(0XFFF76E1E)),
+        border: OutlineInputBorder(),
+        prefixText: prefix),
+    style: TextStyle(color: Colors.amber, fontSize: 25),
+  );
 }
 
 Future<Map> getData() async {
