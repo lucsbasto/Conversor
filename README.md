@@ -1,16 +1,17 @@
-# conversor
+## Conversor de Moedas
 
-A new Flutter project.
+Um projeto desenvolvido utilizando flutter 
 
-## Getting Started
+##Descrição
+  O projeto é um conversor simples desenvolvido inicialmente para o estudo da linguagem de programação flutter, foi utilizado widgets como:
+    - Columns:
+      As moedas estão disponibilizadas em colunas
+     -Async 
+      A chamada da api é feito utilizando um metodo asyncrono à API
+     - Http:
+      A busca pelas moedas é feito através de uma chamada http
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Moedas
+ - Real
+ - Dolar
+ - Euro
